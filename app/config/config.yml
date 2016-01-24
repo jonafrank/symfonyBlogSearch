@@ -67,7 +67,28 @@ swiftmailer:
     spool:     { type: memory }
 
 jonafrank_search:
-    search_engine: google
-    resource: "@AppBundle/Controller/"
+    search_engine: elasticsearch
+
+liip_search:
     google:
-        api_key: "%google_api_key%"
+        search_key: "%google_api_key%"
+
+fos_elastica:
+    clients:
+        default: { host: %elastic_host%, port: %elastic_port% }
+    indexes:
+        example_blog:
+            client: default
+            types:
+                post:
+                    mappings:
+                        id:
+                            type: integer
+                        title: ~
+                        body: ~
+                    persistence:
+                        driver: orm
+                        model: AppBundle\Entity\Post
+                        finder: ~
+                        provider: ~
+                        listener: ~

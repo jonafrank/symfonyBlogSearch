@@ -4,6 +4,7 @@ namespace Jonafrank\SearchBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
 /**
  * This is the class that validates and merges configuration from your app/config files.
@@ -12,6 +13,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  */
 class Configuration implements ConfigurationInterface
 {
+
     /**
      * {@inheritdoc}
      */
@@ -22,13 +24,7 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->enumNode('search_engine')
-                    ->values(array('google', 'elastic_search'))
-                ->end()
-                ->scalarNode('resource')->end()
-                ->arrayNode('google')
-                    ->children()
-                        ->scalarNode('api_key')->end()
-                    ->end()
+                    ->values(array('google', 'elasticsearch'))
                 ->end()
             ->end();
 

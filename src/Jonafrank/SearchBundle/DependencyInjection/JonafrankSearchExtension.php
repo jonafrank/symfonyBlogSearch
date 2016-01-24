@@ -20,23 +20,15 @@ class JonafrankSearchExtension extends Extension implements PrependExtensionInte
     public function prepend(ContainerBuilder $container)
     {
         $bundles = $container->getParameter('kernel.bundles');
-
+        // dump($container->getExtensions());
         $searchConfig = $container->getExtensionConfig($this->getAlias())[0];
-
-        if (empty($searchConfig['resource'])) {
-            throw new InvalidConfigurationException('Node resource missing in jonafrank_search in config.yml');
-        }
         if (!empty($searchConfig)) {
             switch ($searchConfig['search_engine']) {
                 case 'google':
-                        $container->setParameter('jonafrank.search.engine', 'google');
-                        $config = array(
-                            'google'  => array(
-                                'search_key' =>  $searchConfig['google']['api_key']
-                            )
-                        );
-                        $container->prependExtensionConfig('liip_search', $config);
+                    $container->setParameter('jonafrank.search.engine', 'google');
                     break;
+                case 'elasticsearch':
+                    $container->setParameter('jonafrank.search.engine', 'elasticsearch');
             }
         }
 
