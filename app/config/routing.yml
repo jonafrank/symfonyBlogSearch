@@ -1,3 +1,7 @@
+jonafrank_search:
+    resource: "@JonafrankSearchBundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation

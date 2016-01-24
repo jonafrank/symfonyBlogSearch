@@ -1,0 +1,9 @@
+# jonafrank_search_homepage:
+#     path:     /
+#     defaults: { _controller: JonafrankSearchBundle:Default:index }
+jonafrank_search:
+    path: /search
+    defaults: { _controller: JonafrankSearchBundle:Default:search }
+
+liip_search:
+    resource: "@LiipSearchBundle/Resources/config/routing.yml"

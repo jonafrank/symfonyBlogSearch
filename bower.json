@@ -1,0 +1,24 @@
+{
+  "name": "symfonyBlogSearch",
+  "homepage": "https://github.com/jonafrank/symfonyBlogSearch",
+  "authors": [
+    "Jonatan Frank <jonafrank@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "Apache 2.0",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "web/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6",
+    "jquery": "~2.2.0"
+  }
+}

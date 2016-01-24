@@ -1,0 +1,4 @@
+services:
+#    jonafrank_search.example:
+#        class: Jonafrank\SearchBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
