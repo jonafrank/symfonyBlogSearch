@@ -20,4 +20,17 @@ Sample App for a blog with search content
 8. If you plane to use google configure LiipSearchBundle as indicates in their [README.md] (https://github.com/liip/LiipSearchBundle/tree/1.0)
     You will need to have hired the google site search and have an google api key.
 9. For Elasticsearch configure FOSElasticaBundle as indicates in the [DOC] (https://github.com/FriendsOfSymfony/FOSElasticaBundle/blob/3.0.x/Resources/doc/setup.md). Default              values are already configured in this Repository. Also you will need populate the elasticsearch index with ` $ php app/console fos:elastica:populate`
-10. Install Assets third party libraries: ` $ bower install`
+10. Set the search engine to use.
+    For google search engine:
+    ```yaml
+        #app/config/config.yml
+        jonafrank_search:
+            search_engine: google
+    ```
+    For Elasticsearch search engine:
+    ```yaml
+        #app/config/config.yml
+        jonafrank_search:
+            search_engine: elasticsearch
+    ```
+11. Install Assets third party libraries: ` $ bower install`
