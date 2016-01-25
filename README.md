@@ -18,7 +18,7 @@ Sample App for a blog with search content
 6. Create the database schema with: ` $ php app/console doctrine:migrations:migrate`.
 7. Fill the database with some sample data: ` $ php app/console doctrine:fixtures:load`.
 8. If you plane to use google configure LiipSearchBundle as indicates in their [README.md] (https://github.com/liip/LiipSearchBundle/tree/1.0)
-    You will need to have hired the google site search and have an google api key.
+    You will need to have hired the google site search and have a google api key.
 9. For Elasticsearch configure FOSElasticaBundle as indicates in the [DOC] (https://github.com/FriendsOfSymfony/FOSElasticaBundle/blob/3.0.x/Resources/doc/setup.md). Default              values are already configured in this Repository. Also you will need populate the elasticsearch index with ` $ php app/console fos:elastica:populate`
 10. Set the search engine to use.
     For google search engine:
