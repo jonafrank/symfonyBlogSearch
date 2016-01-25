@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Search Results for: "{{ query }}"</h1>
+    <div class="posts">
+        {% for post in pagination %}
+            <div class="panel panel-default">
+                <div class="panel-heading"><h4><a href="{{path("post", {'id': post.id })}}">{{post.title}}</a></h4></div>
+                <div class="panel-body postbody">
+                    {{post.body}}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
