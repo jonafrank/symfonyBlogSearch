@@ -25,6 +25,7 @@ class DefaultController extends Controller
                 $results = $finder->createPaginatorAdapter($query);
                 $pagination = $paginator->paginate($results, $page, 10);
                 return $this->render('JonafrankSearchBundle:Default:elastic_results.html.twig', array(
+                    'query'      => $query,
                     'title'      => 'Search',
                     'pagination' => $pagination
                 ));
