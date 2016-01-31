@@ -8,6 +8,9 @@
         <testsuite name="JonafrankSearchBundle Test Suite">
             <directory>./src/Jonafrank/SearchBundle/Tests</directory>
         </testsuite>
+        <testsuite name="AppBundle Test Suite">
+            <directory>./src/AppBundle/Tests</directory>
+        </testsuite>
     </testsuites>
 
     <filter>

@@ -14,7 +14,6 @@ class DefaultController extends Controller
         $params = array();
         $query = $request->query->get('query');
         $page = $request->query->get('page', 1);
-
         switch ($this->container->getParameter('jonafrank.search.engine')) {
             case 'google':
                 $params = array (
@@ -22,11 +21,7 @@ class DefaultController extends Controller
                     'query'  => SearchParams::requestedQuery($request, 'query'),
                     'page'   => SearchParams::requestedPage($request, 'page')
                 );
-                // return $this->render($resultsTemplate, array(
-                //     'title'  => 'Search',
-                //     'query'  => SearchParams::requestedQuery($request, 'query'),
-                //     'page'   => SearchParams::requestedPage($request, 'page')
-                // ));
+                break;
             case 'elasticsearch':
                 $finder = $this->container->get('fos_elastica.finder.example_blog.post');
                 $paginator = $this->get('knp_paginator');
@@ -37,6 +32,7 @@ class DefaultController extends Controller
                     'title'      => 'Search',
                     'pagination' => $pagination
                 );
+                break;
             case 'doctrine':
                 $pagination =  $this->doctrineSearch($request);
                 $params = array(
@@ -44,8 +40,8 @@ class DefaultController extends Controller
                     'title'      => 'Search',
                     'pagination' => $pagination
                 );
+                break;
         }
-
         return $this->render($resultsTemplate, $params);
     }
 

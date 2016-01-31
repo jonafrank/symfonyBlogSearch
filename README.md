@@ -39,11 +39,17 @@ Sample App for a blog with search content
     For Doctrine search engine:
     ```yaml
         #app/config/config.yml
-        results_template: "default/results.html.twig"
-        search_engine: doctrine
-        doctrine:
-            entity: AppBundle:Post
-            properties_search: [title, body]
+        jonafrank_search:
+            results_template: "default/results.html.twig"
+            search_engine: doctrine
+            doctrine:
+                entity: AppBundle:Post
+                properties_search: [title, body]
     ```
 11. Install Assets third party libraries: ` $ bower install`
 12. To run the tests you need to have elasticsearch installed and the index populated. Do it with ` $ phpunit`
+
+#Extra Considerations
+
+In order to add a new Search engine not implemented, is needed to include the bundle that handle it, add the configuration in config.yml,
+and implement the search in the controller of the JonafrankSearchBundle.

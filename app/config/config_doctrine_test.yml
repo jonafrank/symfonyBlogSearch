@@ -1,0 +1,9 @@
+imports:
+    - { resource: config_test.yml }
+
+jonafrank_search:
+    results_template: "default/results.html.twig"
+    search_engine: doctrine
+    doctrine:
+        entity: AppBundle:Post
+        properties_search: [title, body]

@@ -30,7 +30,7 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('doctrine')
                     ->canBeEnabled()
                     ->children()
-                        ->scalarNode('entity')->end()
+                        ->scalarNode('entity')->defaultValue(null)->end()
                         ->arrayNode('properties_search')
                             ->prototype('scalar')
                         ->end()

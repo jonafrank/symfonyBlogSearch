@@ -30,10 +30,12 @@ class JonafrankSearchExtension extends Extension
                 break;
             case 'elasticsearch':
                 $container->setParameter('jonafrank.search.engine', 'elasticsearch');
+                break;
             case 'doctrine':
                 $container->setParameter('jonafrank.search.engine', 'doctrine');
                 $container->setParameter('jonafrank.search.entity', $config['doctrine']['entity']);
                 $container->setParameter('jonafrank.search.properties_search', $config['doctrine']['properties_search']);
+                break;
         }
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));

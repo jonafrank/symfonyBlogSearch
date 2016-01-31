@@ -1,7 +1,6 @@
 <?php
 namespace Jonafrank\SearchBundle\Tests\DependencyInjection;
 
-
 use Jonafrank\SearchBundle\DependencyInjection\Configuration;
 use Symfony\Component\Config\Definition\Processor;
 
