@@ -23,21 +23,21 @@ Sample App for a blog with search content
 9. For Elasticsearch configure FOSElasticaBundle as indicates in the [DOC] (https://github.com/FriendsOfSymfony/FOSElasticaBundle/blob/3.0.x/Resources/doc/setup.md). Default values are already configured in this Repository. Also you will need populate the elasticsearch index with ` $ php app/console fos:elastica:populate`
 10. Set the search engine to use.
     For google search engine:
-    ```yaml
+    ``` yaml
         #app/config/config.yml
         jonafrank_search:
             results_template: "default/results.html.twig"
             search_engine: google
     ```
     For Elasticsearch search engine:
-    ```yaml
+    ``` yaml
         #app/config/config.yml
         jonafrank_search:
             results_template: "default/results.html.twig"
             search_engine: elasticsearch
     ```
     For Doctrine search engine:
-    ```yaml
+    ``` yaml
         #app/config/config.yml
         jonafrank_search:
             results_template: "default/results.html.twig"
