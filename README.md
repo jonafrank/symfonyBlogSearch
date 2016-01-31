@@ -43,8 +43,8 @@ Sample App for a blog with search content
             results_template: "default/results.html.twig"
             search_engine: doctrine
             doctrine:
-                entity: AppBundle:Post
-                properties_search: [title, body]
+                entity: AppBundle:Post #Entity to search
+                properties_search: [title, body] # Fields where search
     ```
 11. Install Assets third party libraries: ` $ bower install`
 12. To run the tests you need to have elasticsearch installed and the index populated. Do it with ` $ phpunit`
