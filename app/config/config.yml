@@ -67,7 +67,12 @@ swiftmailer:
     spool:     { type: memory }
 
 jonafrank_search:
-    search_engine: elasticsearch
+#     search_engine: elasticsearch
+    results_template: "default/results.html.twig"
+    search_engine: doctrine
+    doctrine:
+        entity: AppBundle:Post
+        properties_search: [title, body]
 
 liip_search:
     google:

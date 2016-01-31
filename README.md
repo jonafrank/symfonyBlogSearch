@@ -7,7 +7,8 @@ Sample App for a blog with search content
 2. Web Server (Apache, NGINX).
 3. Composer.
 4. Node.js and Bower to install dependences.
-5. A google developer key (if is online) or elasticsearch v1.7 installed and running
+5. A google developer key (if is online) or elasticsearch v1.7 installed and running, If you don't have any you can use doctrine full text search (not recomendable);
+6. PHPUnit to run the tests.
 
 ## Up and running instructions
 1. Clone this Repository.
@@ -25,12 +26,24 @@ Sample App for a blog with search content
     ```yaml
         #app/config/config.yml
         jonafrank_search:
+            results_template: "default/results.html.twig"
             search_engine: google
     ```
     For Elasticsearch search engine:
     ```yaml
         #app/config/config.yml
         jonafrank_search:
+            results_template: "default/results.html.twig"
             search_engine: elasticsearch
     ```
+    For Doctrine search engine:
+    ```yaml
+        #app/config/config.yml
+        results_template: "default/results.html.twig"
+        search_engine: doctrine
+        doctrine:
+            entity: AppBundle:Post
+            properties_search: [title, body]
+    ```
 11. Install Assets third party libraries: ` $ bower install`
+12. To run the tests you need to have elasticsearch installed and the index populated. Do it with ` $ phpunit`

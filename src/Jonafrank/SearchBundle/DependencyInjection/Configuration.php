@@ -24,7 +24,17 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->enumNode('search_engine')
-                    ->values(array('google', 'elasticsearch'))
+                    ->values(array('google', 'elasticsearch', 'doctrine'))
+                ->end()
+                ->scalarNode('results_template')->end()
+                ->arrayNode('doctrine')
+                    ->canBeEnabled()
+                    ->children()
+                        ->scalarNode('entity')->end()
+                        ->arrayNode('properties_search')
+                            ->prototype('scalar')
+                        ->end()
+                    ->end()
                 ->end()
             ->end();
 

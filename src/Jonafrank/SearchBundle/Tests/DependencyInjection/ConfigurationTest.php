@@ -30,7 +30,8 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     public function testElasticSearchConfiguration()
     {
         $configuration = $this->getConfigs(array(
-            'search_engine' => 'elasticsearch'
+            'search_engine' => 'elasticsearch',
+            'results_template' => null
         ));
         $this->assertTrue(array_key_exists('search_engine', $configuration));
         $this->assertEquals('elasticsearch', $configuration['search_engine']);
@@ -39,8 +40,20 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     public function testGoogleSearchConfiguration()
     {
         $configuration = $this->getConfigs(array(
-            'search_engine' => 'google'
+            'search_engine' => 'google',
+            'results_template' => null
         ));
         $this->assertEquals('google', $configuration['search_engine']);
+    }
+
+    /**
+     * @expectedException Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     */
+    public function testNotImplementedSearchEngine()
+    {
+        $configuration = $this->getConfigs(array(
+            'search_engine' => 'unknown',
+            'results_template' => null
+        ));
     }
 }

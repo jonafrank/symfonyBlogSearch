@@ -14,26 +14,8 @@ use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
  *
  * @link http://symfony.com/doc/current/cookbook/bundles/extension.html
  */
-class JonafrankSearchExtension extends Extension implements PrependExtensionInterface
+class JonafrankSearchExtension extends Extension
 {
-
-    public function prepend(ContainerBuilder $container)
-    {
-        $bundles = $container->getParameter('kernel.bundles');
-        // dump($container->getExtensions());
-        $searchConfig = $container->getExtensionConfig($this->getAlias())[0];
-        if (!empty($searchConfig)) {
-            switch ($searchConfig['search_engine']) {
-                case 'google':
-                    $container->setParameter('jonafrank.search.engine', 'google');
-                    break;
-                case 'elasticsearch':
-                    $container->setParameter('jonafrank.search.engine', 'elasticsearch');
-            }
-        }
-
-    }
-
     /**
      * {@inheritdoc}
      */
@@ -41,6 +23,19 @@ class JonafrankSearchExtension extends Extension implements PrependExtensionInte
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
+        $container->setParameter('jonafrank.search.results.template', $config['results_template']);
+        switch ($config['search_engine']) {
+            case 'google':
+                $container->setParameter('jonafrank.search.engine', 'google');
+                break;
+            case 'elasticsearch':
+                $container->setParameter('jonafrank.search.engine', 'elasticsearch');
+            case 'doctrine':
+                $container->setParameter('jonafrank.search.engine', 'doctrine');
+                $container->setParameter('jonafrank.search.entity', $config['doctrine']['entity']);
+                $container->setParameter('jonafrank.search.properties_search', $config['doctrine']['properties_search']);
+        }
+
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
     }
