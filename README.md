@@ -22,21 +22,27 @@ Sample App for a blog with search content
     You will need to have hired the google site search and have a google api key.
 9. For Elasticsearch configure FOSElasticaBundle as indicates in the [DOC] (https://github.com/FriendsOfSymfony/FOSElasticaBundle/blob/3.0.x/Resources/doc/setup.md). Default values are already configured in this Repository. Also you will need populate the elasticsearch index with ` $ php app/console fos:elastica:populate`
 10. Set the search engine to use.
+
     For google search engine:
+
     ``` yaml
         #app/config/config.yml
         jonafrank_search:
             results_template: "default/results.html.twig"
             search_engine: google
     ```
+
     For Elasticsearch search engine:
+
     ``` yaml
         #app/config/config.yml
         jonafrank_search:
             results_template: "default/results.html.twig"
             search_engine: elasticsearch
     ```
+
     For Doctrine search engine:
+
     ``` yaml
         #app/config/config.yml
         jonafrank_search:
@@ -46,6 +52,7 @@ Sample App for a blog with search content
                 entity: AppBundle:Post #Entity to search
                 properties_search: [title, body] # Fields where search
     ```
+
 11. Install Assets third party libraries: ` $ bower install`
 12. To run the tests you need to have elasticsearch installed and the index populated. Do it with ` $ phpunit`
 
