@@ -27,4 +27,22 @@ class DefaultControllerTest extends WebTestCase
         $this->assertContains('Search Results for: "Dormouse"', $client->getResponse()->getContent());
         $this->assertTrue($crawler->filter('.panel')->count() > 0);
     }
+
+    public function testDoctrineFailSearch()
+    {
+        $client = static::createClient(array(
+            'environment' => 'doctrine_test'
+        ));
+        $crawler = $client->request('GET', '/search?query=emptyResult');
+        $this->assertTrue($crawler->filter('.panel')->count() == 0);
+    }
+
+    public function testElasticFailSearch()
+    {
+        $client = static::createClient(array(
+            'environment' => 'elastic_test'
+        ));
+        $crawler = $client->request('GET', '/search?query=emptyResult');
+        $this->assertTrue($crawler->filter('.panel')->count() == 0);
+    }
 }
